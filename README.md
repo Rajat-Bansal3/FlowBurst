@@ -1,4 +1,4 @@
-# EssenceFlow: Seamless Hybrid Development Environment  
+# FlowShift: Seamless Hybrid Development Environment  
 ### A project by Rajat Bansal  
 
 ## Table of Contents  
@@ -32,7 +32,7 @@ Modern developers face two critical challenges:
 ---
 
 ## Proposed Solution  
-**EssenceFlow** is a **hybrid development environment** that:  
+**FlowShift** is a **hybrid development environment** that:  
 
 ### **Starts Locally**  
 - Uses familiar **VS Code** and **Docker containers**.  
@@ -52,7 +52,7 @@ Modern developers face two critical challenges:
 ---
 
 ## Abstract  
-**EssenceFlow** eliminates the trade-off between local development comfort and cloud scalability.  
+**FlowShift** eliminates the trade-off between local development comfort and cloud scalability.  
 
 By integrating **real-time resource monitoring, automated cloud provisioning, and seamless VS Code integration**, it allows developers to:  
 
@@ -60,7 +60,7 @@ By integrating **real-time resource monitoring, automated cloud provisioning, an
 - **Automatically shift to a cloud instance** without disrupting their workflow.  
 - **Return to local development** once resources free up.  
 
-**Built for low-spec machines and cost-conscious teams, EssenceFlow democratizes access to scalable development environments.**  
+**Built for low-spec machines and cost-conscious teams, FlowShift democratizes access to scalable development environments.**  
 
 ---
 
@@ -75,7 +75,7 @@ graph TD;
 
     %% Subcomponents
     D[VS Code];
-    E[EssenceFlow Agent];
+    E[FlowShift Agent];
     F[RAM Monitor];
 
     G[VS Code Server];
@@ -103,11 +103,11 @@ graph TD;
 ### **Core Components**  
 
 #### **1. Local Resource Monitor**  
-- **Tech:** Python/Go CLI tool  
+- **Tech:** bash script   
 - **Function:** Tracks RAM/CPU usage; triggers cloud provisioning  
 
 #### **2. Cloud Orchestrator**  
-- **Tech:** DigitalOcean API + Terraform  
+- **Tech:** CloudPlatform API + Terraform  
 - **Function:** Spins up pre-configured VMs with Docker, VS Code Server, and SSH  
 
 #### **3. Pre-Configured Images**  
@@ -124,13 +124,13 @@ graph TD;
 
 #### **1. Local Development**  
 ```
-$ essenceflow start  # User starts coding locally
+$ FlowShift start  # User starts coding locally
 ```
 
 #### **2. Resource Threshold Breached**  
 Agent detects **80% RAM usage** → prompts user:  
 ```
-EssenceFlow  
+FlowShift  
 Low RAM! Switch to cloud?  
 [Y/n]
 ```
@@ -162,7 +162,7 @@ $0.015/min × 600 mins = $9 + $12 subscription = $21/month
 ---
 
 ## Conclusion  
-**EssenceFlow** reimagines development environments by blending the best of **local and cloud worlds**.  
+**FlowShift** reimagines development environments by blending the best of **local and cloud worlds**.  
 
 By prioritizing **user flow** and **cost efficiency**, it empowers developers to **focus on code—not infrastructure**.  
 
