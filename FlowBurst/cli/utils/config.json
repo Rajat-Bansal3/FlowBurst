@@ -1,0 +1,6 @@
+{
+  "cpu_thresh": 80,
+  "cpu_load_thresh": 80,
+  "memory_thresh": 80,
+  "disk_thresh": 90
+}
