@@ -1,4 +1,4 @@
-# FlowShift: Seamless Hybrid Development Environment  
+# FlowBurst: Seamless Hybrid Development Environment  
 ### A project by Rajat Bansal  
 
 ## Table of Contents  
@@ -32,7 +32,7 @@ Modern developers face two critical challenges:
 ---
 
 ## Proposed Solution  
-**FlowShift** is a **hybrid development environment** that:  
+**FlowBurst** is a **hybrid development environment** that:  
 
 ### **Starts Locally**  
 - Uses familiar **VS Code** and **Docker containers**.  
@@ -52,7 +52,7 @@ Modern developers face two critical challenges:
 ---
 
 ## Abstract  
-**FlowShift** eliminates the trade-off between local development comfort and cloud scalability.  
+**FlowBurst** eliminates the trade-off between local development comfort and cloud scalability.  
 
 By integrating **real-time resource monitoring, automated cloud provisioning, and seamless VS Code integration**, it allows developers to:  
 
@@ -60,7 +60,7 @@ By integrating **real-time resource monitoring, automated cloud provisioning, an
 - **Automatically shift to a cloud instance** without disrupting their workflow.  
 - **Return to local development** once resources free up.  
 
-**Built for low-spec machines and cost-conscious teams, FlowShift democratizes access to scalable development environments.**  
+**Built for low-spec machines and cost-conscious teams, FlowBurst democratizes access to scalable development environments.**  
 
 ---
 
@@ -75,7 +75,7 @@ graph TD;
 
     %% Subcomponents
     D[VS Code];
-    E[FlowShift Agent];
+    E[FlowBurst Agent];
     F[RAM Monitor];
 
     G[VS Code Server];
@@ -124,13 +124,13 @@ graph TD;
 
 #### **1. Local Development**  
 ```
-$ FlowShift start  # User starts coding locally
+$ FlowBurst start  # User starts coding locally
 ```
 
 #### **2. Resource Threshold Breached**  
 Agent detects **80% RAM usage** → prompts user:  
 ```
-FlowShift  
+FlowBurst  
 Low RAM! Switch to cloud?  
 [Y/n]
 ```
@@ -162,7 +162,7 @@ $0.015/min × 600 mins = $9 + $12 subscription = $21/month
 ---
 
 ## Conclusion  
-**FlowShift** reimagines development environments by blending the best of **local and cloud worlds**.  
+**FlowBurst** reimagines development environments by blending the best of **local and cloud worlds**.  
 
 By prioritizing **user flow** and **cost efficiency**, it empowers developers to **focus on code—not infrastructure**.  
 
