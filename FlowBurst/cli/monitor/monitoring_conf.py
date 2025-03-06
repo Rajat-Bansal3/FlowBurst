@@ -1,14 +1,11 @@
 import time
 import json
 from pathlib import Path
-from threading import Thread, Event
+import multiprocessing
 from monitor.cpu import check_cpu
 from monitor.ram import check_memory
 from monitor.disk import check_disk
-
-monitoring_active = Event()
-monitoring_active.set()
-
+from utils.processes import monitor_process
 
 def monitor_system(cpu_threshold, load_threshold, ram_threshold, disk_threshold, log_path, freq=5):
     """
@@ -48,12 +45,16 @@ def start_monitoring(config_path, log_file):
         ram_threshold = config.get("ram_thresh", 75)
         disk_threshold = config.get("disk_thresh", 90)
 
-        monitor_thread = Thread(
+        global monitor_process
+        if monitor_process and monitor_process.is_alive():
+            print(f"⚠️ Monitoring is already running (PID: {monitor_process.pid})")
+            return
+        monitor_process = multiprocessing.Process(
             target=monitor_system,
             args=(cpu_threshold, cpu_load_threshold, ram_threshold, disk_threshold, log_file, 5),
             # daemon=True
         )
-        monitor_thread.start()
+        monitor_process.start()
         print("Monitoring started. Logs are being written to:", log_file)
 
     except FileNotFoundError:
@@ -65,6 +66,11 @@ def stop_monitoring():
     """
     Stop the monitoring loop.
     """
-    monitoring_active.clear()  
-    print("Monitoring stopped.")
-
+    global monitor_process
+    if (not monitor_process) or (not monitor_process.is_alive()):
+        print("No Monitoring Process Started\nStart It Using flowburst monitoring start")
+    if monitor_process and monitor_process.is_alive():
+        print(f"🛑 Stopping monitoring (PID: {monitor_process.pid})")
+        monitor_process.terminate()
+        monitor_process.join()
+        monitor_process = None
