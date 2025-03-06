@@ -1,4 +1,5 @@
 from monitor.monitoring_conf import start_monitoring , stop_monitoring
+from devContainers.dev_containers_conf import get_environments , use_environments ,show_environments
 import pathlib
 
 curr_dir = pathlib.Path(__file__).parent
@@ -12,14 +13,9 @@ Services = {
         "stop": lambda : stop_monitoring(),
         "status": lambda: print("📊 Monitoring is running"),
     },
-    "logging": {
-        "start": lambda: print("✅ Logging service started"),
-        "stop": lambda: print("🛑 Logging service stopped"),
-        "status": lambda: print("📜 Logging is active"),
-    },
-    "network": {
-        "start": lambda: print("✅ Network service initialized"),
-        "stop": lambda: print("🛑 Network service shut down"),
-        "status": lambda: print("🌐 Network is operational"),
-    },
+    "environments" : {
+        "show" : lambda : show_environments(),
+        "use" : lambda : use_environments(),
+        "get" : lambda : get_environments() 
+    }
 }
