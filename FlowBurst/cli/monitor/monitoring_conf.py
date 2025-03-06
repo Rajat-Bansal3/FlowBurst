@@ -10,27 +10,36 @@ monitoring_active = Event()
 monitoring_active.set()
 
 
-def monitor_system(cpu_threshold, load_threshold, ram_threshold, disk_threshold):
+def monitor_system(cpu_threshold, load_threshold, ram_threshold, disk_threshold, log_path, freq=5):
     """
     Continuously monitor CPU, RAM, and disk usage.
     """
+    Path(log_path).touch(exist_ok=True)
+
     while True:
-        cpu_status = check_cpu(cpu_threshold,load_threshold)
+        cpu_status = check_cpu(cpu_threshold, load_threshold)
         ram_status = check_memory(ram_threshold)
         disk_status = check_disk(disk_threshold)
 
-        print(cpu_status)
-        print(ram_status)
-        print(disk_status)
+        log_entry = {
+            "cpu_status": cpu_status,
+            "ram_status": ram_status,
+            "disk_status": disk_status,
+            "timestamp": time.time()  
+        }
 
-        time.sleep(5)
+        # Log the status to the specified log file in JSON format
+        with open(log_path, "a") as log_file:
+            log_file.write(json.dumps(log_entry) + "\n")
+
+        time.sleep(freq)
 
 def start_monitoring(config_path, log_file):
     """
     Start the monitoring loop in a separate thread.
     """
     try:
-        with config_path.open("r", encoding="utf-8") as file:
+        with open(f"{config_path}", "r", encoding="utf-8") as file:
             config = json.load(file)
 
         # DEFAULTS: change if u want 
@@ -41,7 +50,8 @@ def start_monitoring(config_path, log_file):
 
         monitor_thread = Thread(
             target=monitor_system,
-            args=(cpu_threshold, cpu_load_threshold, ram_threshold, disk_threshold, log_file),
+            args=(cpu_threshold, cpu_load_threshold, ram_threshold, disk_threshold, log_file, 5),
+            # daemon=True
         )
         monitor_thread.start()
         print("Monitoring started. Logs are being written to:", log_file)

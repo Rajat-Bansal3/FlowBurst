@@ -1,2 +1,14 @@
-day-1 : made a prototype script to see how log management will work quick prototype thought about cli arch and tech stack 
-day-2 : made monitoring modules and read a little about command parsing 
+# Progress Report  
+
+## Day 1  
+- Created a prototype script to test log management functionality.  
+- Built a quick prototype.  
+- Considered CLI architecture and potential tech stack.  
+
+## Day 2  
+- Developed monitoring modules.  
+- Researched command parsing concepts.  
+
+## Day 3  
+- Completed monitoring module.  
+- Implemented commands to start/stop/status monitoring threads as independent threads.  
