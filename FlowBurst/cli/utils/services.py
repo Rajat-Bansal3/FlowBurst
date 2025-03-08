@@ -16,6 +16,7 @@ Services = {
     "environments" : {
         "show" : lambda : show_environments(),
         "use" : lambda : use_environments(),
+        "use --pre-config" : lambda : use_environments(config=True),
         "get" : lambda : get_environments() 
     }
 }
